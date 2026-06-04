@@ -1,27 +1,34 @@
 import { useEffect, useState } from "react";
 import "./TodoList.css";
 
-function TodoList({todo, tTodo, deleteTodo, edit}) {
+function TodoList() {
     const [list, setList] = useState([]);
 
-    useEffect(() => {
+useEffect(() => {
         fetch('http://localhost:3000/list')
-        .then((response) => response.json())
-        .then((data) => setPosts(data))
-        .catch((error) => console.log(error));
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setList(data);
+            })
+            .catch((error) => console.log(error));
     }, []);
 
+    const toogleTodo = (id) => {
+        setList(list.map(item =>
+            item.id === id ? { ...item, status: !item.status } : item
+        ));
+    };
     return (
         <div className="todo-container">
             <h1>Todo List</h1>
-            {list.map((l) => (
+            {Array.isArray(list) && list.map((l) => (
                 <div className="todo-item" key={l.id}>
                     <input
                         type="checkbox"
                         checked={l.status}
-                        readOnly
+                        onChange={() => toogleTodo(l.id)}
                     />
-
                     <span>{l.title}</span>
                 </div>
             ))}
