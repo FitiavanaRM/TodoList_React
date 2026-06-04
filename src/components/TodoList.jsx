@@ -19,6 +19,11 @@ useEffect(() => {
             item.id === id ? { ...item, status: !item.status } : item
         ));
     };
+
+    const deleteTodo = (id) => {
+        const updatedList = list.filter(item => item.id !== id);
+        setList(updatedList);
+    }
     return (
         <div className="todo-container">
             <h1>Todo List</h1>
@@ -30,6 +35,12 @@ useEffect(() => {
                         onChange={() => toogleTodo(l.id)}
                     />
                     <span>{l.title}</span>
+                    <button 
+                        className="delete-btn" 
+                        onClick={() => deleteTodo(l.id)}
+                    >
+                        🗑️
+                    </button>
                 </div>
             ))}
         </div>
