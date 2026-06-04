@@ -1,0 +1,29 @@
+{
+    "list": [
+        {
+            "title": "Faire la vaisselle",
+            "status": false,
+            "id": 1
+        },
+        {
+            "title": "Sortir les poubelles",
+            "status": false,
+            "id": 2
+        },
+        {
+            "title": "Nettoyer la chambre",
+            "status": true,
+            "id": 3
+        },
+        {
+            "title": "Réviser React",
+            "status": true,
+            "id": 4
+        },
+        {
+            "title": "Acheter du dentifrice",
+            "status": false,
+            "id": 5
+        }
+    ]
+}
